@@ -10,7 +10,7 @@ export default function RootLayout() {
   }
 
   return (
-    <div className={`min-h-screen ${palette.bg} text-[#000A3A]`}>
+    <div className={`min-h-screen bg-[#F8FAFF] text-[#000A3A]`}>
       <aside className="fixed top-0 left-0 h-full w-64 bg-white border-r border-[#60A5FA]/60 z-50 hidden md:flex flex-col">
         <div className="p-6 flex items-center gap-3 border-b border-[#60A5FA]/40">
           <img src="/img/logo.svg" alt="Logo" className="w-9 h-9" />
@@ -59,21 +59,10 @@ export default function RootLayout() {
             <Eye size={18} /> Preview & Publish
           </NavLink>
         </nav>
-        <div className="p-3 border-t border-[#60A5FA]/40">
-          <button
-            onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-[#DC2626] hover:bg-red-50 transition"
-          >
-            <LogOut size={18} /> Logout
-          </button>
-        </div>
       </aside>
       <div className="md:ml-64 min-h-screen">
         <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#60A5FA]/40 px-6 md:px-8 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src="/img/logo.svg" alt="Logo" className="w-8 h-8 md:hidden" />
-            <h1 className="text-xl font-semibold tracking-tight text-[#000A3A]">Preproute</h1>
-          </div>
+          <img src="/img/logo.svg" alt="Logo" className="w-8 h-8 md:hidden" />
           <div className="flex items-center gap-3">
             <img src="/img/user.svg" alt="" className="w-7 h-7 rounded-full bg-slate-100" />
             <span className="text-xs px-2.5 py-1 rounded-full bg-[#1B5DEF]/10 text-[#1B5DEF] font-medium">
