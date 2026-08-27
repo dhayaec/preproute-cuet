@@ -6,4 +6,6 @@ export const questionApi = {
     http.post<ApiResponse<Question[]>>('/questions/bulk', { questions }),
   fetchBulk: (question_ids: string[]) =>
     http.post<ApiResponse<Question[]>>('/questions/fetchBulk', { question_ids }),
+  listByTest: (testId: string) =>
+    http.get<ApiResponse<Question[]>>(`/questions/test/${testId}`),
 };
