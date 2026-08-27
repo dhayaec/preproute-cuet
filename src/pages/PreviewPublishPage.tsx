@@ -45,7 +45,7 @@ export default function PreviewPublishPage() {
       </div>
       <div className="flex gap-3">
         <button
-          onClick={() => navigate('/tests/edit')}
+          onClick={() => navigate('/tests/create')}
           className={`${tokens.btnSecondary} flex items-center gap-2 px-5 py-2.5 text-sm`}
         >
           <ArrowLeft size={16} /> Back

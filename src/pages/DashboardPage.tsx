@@ -11,11 +11,13 @@ export default function DashboardPage() {
   const [page, setPage] = useState(1)
   const perPage = 5
 
-  const filtered = (tests || []).filter(
-    (t) =>
-      t.name.toLowerCase().includes(query.toLowerCase()) ||
-      (t.subject || '').toLowerCase().includes(query.toLowerCase()),
-  )
+  const filtered = (tests || [])
+    .filter(
+      (t) =>
+        t.name.toLowerCase().includes(query.toLowerCase()) ||
+        (t.subject || '').toLowerCase().includes(query.toLowerCase()),
+    )
+    .sort((a, b) => new Date(b.updated_at || 0).getTime() - new Date(a.updated_at || 0).getTime())
   const totalPages = Math.max(1, Math.ceil(filtered.length / perPage))
   const paginated = filtered.slice((page - 1) * perPage, page * perPage)
 
@@ -91,7 +93,7 @@ export default function DashboardPage() {
                   <td className="px-5 py-3 text-[#374151]">{t.subject}</td>
                   <td className="px-5 py-3 text-[#374151]">{Array.isArray(t.topics) ? t.topics.join(', ') : ''}</td>
                   <td className="px-5 py-3">
-                    <button onClick={() => navigate(`/tests/edit/${t.id}`)} className="inline-flex items-center gap-1 text-xs font-medium text-[#1B5DEF] hover:underline"><Pencil size={12}/> Edit</button>
+                    <button onClick={() => navigate(`/tests/create/${t.id}`)} className="inline-flex items-center gap-1 text-xs font-medium text-[#1B5DEF] hover:underline"><Pencil size={12}/> Edit</button>
                     <span className={`ml-3 text-xs font-semibold px-2.5 py-0.5 rounded-full ${t.status === 'live' ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-200 text-slate-600'}`}>{t.status}</span>
                   </td>
                 </tr>

@@ -4,7 +4,6 @@ import ProtectedLayout from '@/components/ProtectedLayout'
 import LoginPage from '@/pages/LoginPage'
 import DashboardPage from '@/pages/DashboardPage'
 import CreateTestPage from '@/pages/CreateTestPage'
-import EditDetailsPage from '@/pages/EditDetailsPage'
 import QuestionsPage from '@/pages/QuestionsPage'
 import PreviewPublishPage from '@/pages/PreviewPublishPage'
 import { isAuthenticated } from '@/shared/lib/auth'
@@ -27,7 +26,7 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <DashboardPage /> },
           { path: 'tests/create', element: <CreateTestPage /> },
-          { path: 'tests/edit/:id?', element: <EditDetailsPage /> },
+          { path: 'tests/create/:id?', element: <CreateTestPage /> },
           { path: 'tests/questions', element: <QuestionsPage /> },
           { path: 'tests/preview', element: <PreviewPublishPage /> },
         ],

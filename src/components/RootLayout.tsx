@@ -11,7 +11,7 @@ export default function RootLayout() {
   return (
     <div className={`min-h-screen bg-[#F8FAFF] text-[#000A3A]`}>
       <aside className="fixed top-0 left-0 h-full w-64 bg-white border-r border-[#60A5FA]/60 z-50 hidden md:flex flex-col">
-        <div className="p-6 flex items-center justify-end gap-3 border-b border-[#60A5FA]/40">
+        <div className="p-3 flex items-center justify-center gap-1 border-b border-[#60A5FA]/40">
           <img src="/img/logo.svg" alt="Logo" className="w-32 h-12" />
         </div>
         <nav className="flex-1 px-3 py-4 space-y-1">
@@ -31,14 +31,6 @@ export default function RootLayout() {
             }
           >
             <PlusSquare size={18} /> Create Test
-          </NavLink>
-          <NavLink
-            to="/tests/edit"
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition ${isActive ? 'bg-[#1B5DEF]/10 text-[#1B5DEF]' : 'text-[#374151] hover:text-[#000A3A] hover:bg-slate-50'}`
-            }
-          >
-            <FileEdit size={18} /> Edit Details
           </NavLink>
           <NavLink
             to="/tests/questions"
