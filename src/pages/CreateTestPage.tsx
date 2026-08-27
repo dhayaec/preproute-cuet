@@ -60,7 +60,7 @@ export default function CreateTestPage() {
   }
 
   return (
-    <div className="max-w-3xl">
+    <div className="w-full">
       <div className="mb-8">
         <h2 className={tokens.heading}>Create Test</h2>
         <p className={`${tokens.subheading} mt-1`}>

@@ -12,9 +12,8 @@ export default function RootLayout() {
   return (
     <div className={`min-h-screen bg-[#F8FAFF] text-[#000A3A]`}>
       <aside className="fixed top-0 left-0 h-full w-64 bg-white border-r border-[#60A5FA]/60 z-50 hidden md:flex flex-col">
-        <div className="p-6 flex items-center gap-3 border-b border-[#60A5FA]/40">
-          <img src="/img/logo.svg" alt="Logo" className="w-9 h-9" />
-          <span className="font-bold text-lg text-[#000A3A]">Preproute</span>
+        <div className="p-6 flex items-center justify-end gap-3 border-b border-[#60A5FA]/40">
+          <img src="/img/logo.svg" alt="Logo" className="w-32 h-12" />
         </div>
         <nav className="flex-1 px-3 py-4 space-y-1">
           <NavLink
@@ -61,7 +60,7 @@ export default function RootLayout() {
         </nav>
       </aside>
       <div className="md:ml-64 min-h-screen">
-        <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#60A5FA]/40 px-6 md:px-8 py-4 flex items-center justify-between">
+        <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#60A5FA]/40 px-6 md:px-8 py-4 flex items-center justify-end">
           <img src="/img/logo.svg" alt="Logo" className="w-8 h-8 md:hidden" />
           <div className="flex items-center gap-3">
             <img src="/img/user.svg" alt="" className="w-7 h-7 rounded-full bg-slate-100" />

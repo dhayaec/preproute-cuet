@@ -8,12 +8,12 @@ export default function PreviewPublishPage() {
     alert('Published to backend!')
   }
   return (
-    <div>
+    <div className="w-full">
       <div className="mb-8">
         <h2 className={tokens.heading}>Preview & Publish</h2>
         <p className={`${tokens.subheading} mt-1`}>Review and publish the test</p>
       </div>
-      <div className={`max-w-2xl ${tokens.card} p-8 mb-8`}>
+      <div className={`w-full max-w-3xl ${tokens.card} p-8 mb-8`}>
         <h3 className="font-bold text-lg mb-1 text-[#000A3A]">Math Midterm</h3>
         <p className="text-sm text-[#374151] mb-4">Mathematics · Algebra, Geometry</p>
         <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-3">
