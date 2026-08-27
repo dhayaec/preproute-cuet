@@ -76,9 +76,8 @@ export default function CreateTestPage() {
       </div>
       <h2 className={tokens.heading}>Create Test / Chapter Wise</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className={`${tokens.cardDark} p-6 space-y-5`}>
-            <h3 className="text-sm font-semibold text-[#374151] uppercase tracking-wider">Basic Details</h3>
+        <div className={`${tokens.cardDark} p-6 space-y-5`}>
+          <div className="grid gap-4 md:grid-cols-2">
             <div>
               <label className={tokens.label}>Subject</label>
               <select {...register('subject')} className={`${tokens.input} bg-white`}>
@@ -113,50 +112,51 @@ export default function CreateTestPage() {
               </select>
             </div>
           </div>
-          <div className={`${tokens.cardDark} p-6 space-y-5`}>
-            <h3 className="text-sm font-semibold text-[#374151] uppercase tracking-wider">Test Configuration</h3>
-            <div>
-              <label className={tokens.label}>Duration (Minutes)</label>
-              <input type="number" {...register('duration')} placeholder="Enter the time" className={tokens.input} />
-              {errors.duration && <p className={tokens.error}>{errors.duration.message}</p>}
-            </div>
-            <div>
-              <label className={tokens.label}>Test Difficulty Level</label>
-              <div className="flex gap-4">
-                {(['Easy', 'Medium', 'Difficult'] as const).map((d) => (
-                  <label key={d} className="flex items-center gap-2 text-sm text-[#374151]">
-                    <input type="radio" value={d} {...register('difficulty')} className="accent-[#1B5DEF]" />
-                    <span>{d}</span>
-                  </label>
-                ))}
+          <div className="border-t border-slate-200 pt-5">
+            <h3 className="text-sm font-semibold text-[#374151] uppercase tracking-wider mb-4">Test Configuration</h3>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div>
+                <label className={tokens.label}>Duration (Minutes)</label>
+                <input type="number" {...register('duration')} placeholder="Enter the time" className={tokens.input} />
+                {errors.duration && <p className={tokens.error}>{errors.duration.message}</p>}
               </div>
-              {errors.difficulty && <p className={tokens.error}>{errors.difficulty.message}</p>}
+              <div>
+                <label className={tokens.label}>Test Difficulty Level</label>
+                <div className="flex gap-4 pt-2">
+                  {(['Easy', 'Medium', 'Difficult'] as const).map((d) => (
+                    <label key={d} className="flex items-center gap-2 text-sm text-[#374151]">
+                      <input type="radio" value={d} {...register('difficulty')} className="accent-[#1B5DEF]" />
+                      <span>{d}</span>
+                    </label>
+                  ))}
+                </div>
+                {errors.difficulty && <p className={tokens.error}>{errors.difficulty.message}</p>}
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className={`${tokens.cardDark} p-6`}>
-          <h3 className="text-sm font-semibold text-[#374151] uppercase tracking-wider mb-4">Marking Scheme</h3>
-          <div className="grid gap-4 sm:grid-cols-5">
-            <div>
-              <label className={tokens.label}>Wrong Answer</label>
-              <input type="number" {...register('wrongMarks')} className={`${tokens.input} text-center`} defaultValue={-1} />
-            </div>
-            <div>
-              <label className={tokens.label}>Unattempted</label>
-              <input type="number" {...register('unattemptedMarks')} className={`${tokens.input} text-center`} defaultValue={0} />
-            </div>
-            <div>
-              <label className={tokens.label}>Correct Answer</label>
-              <input type="number" {...register('correctMarks')} className={`${tokens.input} text-center`} defaultValue={5} />
-            </div>
-            <div>
-              <label className={tokens.label}>No of Questions</label>
-              <input type="number" {...register('totalQuestions')} placeholder="Ex: 50" className={tokens.input} />
-            </div>
-            <div>
-              <label className={tokens.label}>Total Marks</label>
-              <input type="number" {...register('totalMarks')} placeholder="Ex: 250" className={tokens.input} />
+          <div className="border-t border-slate-200 pt-5">
+            <h3 className="text-sm font-semibold text-[#374151] uppercase tracking-wider mb-4">Marking Scheme</h3>
+            <div className="grid gap-4 sm:grid-cols-5">
+              <div>
+                <label className={tokens.label}>Wrong Answer</label>
+                <input type="number" {...register('wrongMarks')} className={`${tokens.input} text-center`} defaultValue={-1} />
+              </div>
+              <div>
+                <label className={tokens.label}>Unattempted</label>
+                <input type="number" {...register('unattemptedMarks')} className={`${tokens.input} text-center`} defaultValue={0} />
+              </div>
+              <div>
+                <label className={tokens.label}>Correct Answer</label>
+                <input type="number" {...register('correctMarks')} className={`${tokens.input} text-center`} defaultValue={5} />
+              </div>
+              <div>
+                <label className={tokens.label}>No of Questions</label>
+                <input type="number" {...register('totalQuestions')} placeholder="Ex: 50" className={tokens.input} />
+              </div>
+              <div>
+                <label className={tokens.label}>Total Marks</label>
+                <input type="number" {...register('totalMarks')} placeholder="Ex: 250" className={tokens.input} />
+              </div>
             </div>
           </div>
         </div>
