@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
-import { LogOut, ClipboardList, LayoutDashboard, PlusSquare, Eye, FileEdit } from 'lucide-react'
+import { LogOut, LayoutDashboard, PlusSquare, Eye } from 'lucide-react'
 
 export default function RootLayout() {
   const navigate = useNavigate()
@@ -31,14 +31,6 @@ export default function RootLayout() {
             }
           >
             <PlusSquare size={18} /> Create Test
-          </NavLink>
-          <NavLink
-            to="/tests/questions"
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition ${isActive ? 'bg-[#1B5DEF]/10 text-[#1B5DEF]' : 'text-[#374151] hover:text-[#000A3A] hover:bg-slate-50'}`
-            }
-          >
-            <ClipboardList size={18} /> Questions
           </NavLink>
           <NavLink
             to="/tests/preview"

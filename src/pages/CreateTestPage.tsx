@@ -121,7 +121,7 @@ export default function CreateTestPage() {
     if (isEdit && editId) {
       testApi
         .update(editId, payload)
-        .then(() => navigate('/'))
+        .then(() => navigate(`/tests/questions?testId=${editId}`))
         .catch((err: any) => {
           const body = err?.response?.data
           if (body && typeof body === 'object') {
