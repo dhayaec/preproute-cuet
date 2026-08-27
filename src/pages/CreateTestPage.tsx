@@ -89,12 +89,12 @@ export default function CreateTestPage() {
         totalMarks: test.total_marks ?? 250,
       })
     }
-  }, [isEdit, test, subjects, topics, subTopics, reset])
+  }, [isEdit, test, subjects, reset])
 
   // Reset topic + subTopic when subject changes (skip during initial edit populate)
   const [hydrated, setHydrated] = useState(false)
   useEffect(() => { if (isEdit && test && subjects.length && selectedSubject) setHydrated(true) }, [isEdit, test, subjects, selectedSubject])
-  useEffect(() => { if (hydrated) reset({ ...getValues(), topic: '', subTopic: '' }) }, [selectedSubject, hydrated])
+  useEffect(() => { if (hydrated && selectedSubject && selectedSubject !== (test?.subject || '')) reset({ ...getValues(), topic: '', subTopic: '' }) }, [selectedSubject, hydrated, test])
   useEffect(() => { if (hydrated) reset({ ...getValues(), subTopic: '' }) }, [selectedTopic, hydrated])
 
   const onSubmit = (data: FormData) => {
