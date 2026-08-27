@@ -30,6 +30,7 @@ export interface Test {
   unattempt_marks?: number;
   difficulty?: string;
   total_time?: number;
+  duration?: number;
   total_marks?: number;
   total_questions?: number;
   questions?: string[];

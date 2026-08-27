@@ -1,6 +1,5 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { LogOut, ClipboardList, LayoutDashboard, PlusSquare, Eye, FileEdit } from 'lucide-react'
-import { palette } from '@/shared/design-system/tokens'
 
 export default function RootLayout() {
   const navigate = useNavigate()

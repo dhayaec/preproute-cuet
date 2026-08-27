@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import { ChevronLeft, ChevronRight, Search } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { ChevronLeft, ChevronRight, Search, Pencil } from 'lucide-react'
 import { useTests } from '@/features/tests/hooks/useTests'
 import { tokens } from '@/shared/design-system/tokens'
 
 export default function DashboardPage() {
+  const navigate = useNavigate()
   const { data: tests = [], isLoading } = useTests()
   const [query, setQuery] = useState('')
   const [page, setPage] = useState(1)
@@ -89,7 +91,8 @@ export default function DashboardPage() {
                   <td className="px-5 py-3 text-[#374151]">{t.subject}</td>
                   <td className="px-5 py-3 text-[#374151]">{Array.isArray(t.topics) ? t.topics.join(', ') : ''}</td>
                   <td className="px-5 py-3">
-                    <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${t.status === 'live' ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-200 text-slate-600'}`}>{t.status}</span>
+                    <button onClick={() => navigate(`/tests/edit/${t.id}`)} className="inline-flex items-center gap-1 text-xs font-medium text-[#1B5DEF] hover:underline"><Pencil size={12}/> Edit</button>
+                    <span className={`ml-3 text-xs font-semibold px-2.5 py-0.5 rounded-full ${t.status === 'live' ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-200 text-slate-600'}`}>{t.status}</span>
                   </td>
                 </tr>
               ))
