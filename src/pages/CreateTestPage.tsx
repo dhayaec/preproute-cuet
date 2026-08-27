@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { useForm } from 'react-hook-form'
@@ -23,6 +24,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 
 export default function CreateTestPage() {
+  const [tabType, setTabType] = useState<'chapterwise' | 'pyq' | 'mock'>('chapterwise')
   const navigate = useNavigate()
   const createTest = useCreateTest()
 
@@ -48,7 +50,7 @@ export default function CreateTestPage() {
       {
         name: data.name,
         subject: data.subject,
-        type: 'chapterwise',
+        type: tabType,
         topics: [data.topic, ...(data.subTopic ? [data.subTopic] : [])],
         duration: data.duration,
         difficulty: data.difficulty.toLowerCase(),
@@ -65,16 +67,22 @@ export default function CreateTestPage() {
   return (
     <div className="w-full">
       <div className="mb-6 flex gap-2">
-        {['Chapterwise', 'PYQ', 'Mock Test'].map((t) => (
-          <button
-            key={t}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium border transition ${t === 'Chapterwise' ? 'bg-[#1B5DEF] text-white border-[#1B5DEF]' : 'bg-white text-[#374151] border-[#60A5FA]/40 hover:bg-slate-50'}`}
-          >
-            {t}
-          </button>
-        ))}
+        {(['Chapterwise', 'PYQ', 'Mock Test'] as const).map((t) => {
+          const val = t === 'Chapterwise' ? 'chapterwise' : t === 'PYQ' ? 'pyq' : 'mock'
+          return (
+            <button
+              key={t}
+              type="button"
+              onClick={() => setTabType(val)}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition ${tabType === val ? 'bg-[#1B5DEF] text-white border-[#1B5DEF]' : 'bg-white text-[#374151] border-[#60A5FA]/40 hover:bg-slate-50'}`}
+            >
+              {t}
+            </button>
+          )
+        })}
       </div>
-      <h2 className={tokens.heading}>Create Test / Chapter Wise</h2>
+      <div className="text-xs text-[#6B7280] mb-2">Create Test / Chapter Wise</div>
+      <h2 className={tokens.heading}>Chapterwise</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className={`${tokens.cardDark} p-6 space-y-5`}>
           <div className="grid gap-4 md:grid-cols-2">
