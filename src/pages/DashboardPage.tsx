@@ -31,10 +31,10 @@ export default function DashboardPage() {
           { title: 'Active Questions', value: '86', sub: 'MCQ format' },
           { title: 'Pending Reviews', value: '3', sub: 'Awaiting approval' },
         ].map((card) => (
-          <div key={card.title} className={`${tokens.cardDark} p-6`}>
-            <div className="text-sm text-[#374151] font-medium">{card.title}</div>
-            <div className="text-3xl font-extrabold mt-1 text-[#000A3A]">{card.value}</div>
-            <div className="text-xs text-[#6B7280] mt-2">{card.sub}</div>
+          <div key={card.title} className={`${tokens.cardDark} p-4`}>
+            <div className="text-xs text-[#374151] font-medium">{card.title}</div>
+            <div className="text-2xl font-extrabold mt-0.5 text-[#000A3A]">{card.value}</div>
+            <div className="text-[11px] text-[#6B7280] mt-1">{card.sub}</div>
           </div>
         ))}
       </div>
