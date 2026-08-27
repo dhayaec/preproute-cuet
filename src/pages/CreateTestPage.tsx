@@ -15,7 +15,7 @@ const schema = z.object({
   duration: z.coerce.number().min(1, 'Duration required'),
   difficulty: z.enum(['Easy', 'Medium', 'Difficult']),
   correctMarks: z.coerce.number().min(0),
-  wrongMarks: z.coerce.number().min(0),
+  wrongMarks: z.coerce.number(),
   unattemptedMarks: z.coerce.number().min(0),
   totalQuestions: z.coerce.number().min(1),
   totalMarks: z.coerce.number().min(1),
