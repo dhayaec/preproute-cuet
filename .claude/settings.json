@@ -1,0 +1,29 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://localhost:20128",
+    "ANTHROPIC_AUTH_TOKEN": "omniroute",
+    "ANTHROPIC_MODEL": "openrouter/free",
+    "ANTHROPIC_SMALL_FAST_MODEL": "openrouter/free",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "openrouter/free",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "openrouter/free",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "openrouter/free",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(pnpm build *)",
+      "Bash(git add *)",
+      "Bash(git commit --no-verify -m 'feat: JWT auth guard with login default and protected pages *)",
+      "Bash(git commit *)",
+      "Bash(gh --version)",
+      "Bash(git ls-remote *)",
+      "Bash(git remote *)",
+      "Bash(gh repo *)",
+      "Bash(rm -rf .git)",
+      "Bash(git init *)"
+    ]
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
+  }
+}
