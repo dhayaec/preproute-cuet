@@ -117,6 +117,7 @@ export default function CreateTestPage() {
       unattempt_marks: data.unattemptedMarks,
       total_questions: data.totalQuestions,
       total_marks: data.totalMarks,
+      status: (test as any)?.status ?? 'draft',
     }
     if (isEdit && editId) {
       testApi
@@ -142,7 +143,7 @@ export default function CreateTestPage() {
       return
     }
     createTest.mutate(
-      { ...payload, status: null, type: tabType } as any,
+      { ...payload, status: isEdit ? (test?.status ?? "draft") : "draft", type: tabType } as any,
       {
         onSuccess: (res: any) => {
           const testId = res?.data?.id
