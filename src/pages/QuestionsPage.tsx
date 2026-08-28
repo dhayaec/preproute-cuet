@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { Trash2 } from 'lucide-react'
@@ -13,25 +13,34 @@ export default function QuestionsPage() {
 
   const { data: test } = useTest(testId)
 
-  const [questions, setQuestions] = useState([
-    { id: 1, type: 'mcq', question: '', option1: '', option2: '', option3: '', option4: '', correct_option: '', explanation: '', difficulty: 'easy', status: 'draft', test_id: testId },
-  ])
-  const [current, setCurrent] = useState(1)
-  const [errors, setErrors] = useState<Record<number, string>>({})
+  const [questions, setQuestions] = useState(() => {
+    const id = crypto.randomUUID()
+    return [{ id, type: 'mcq', question: '', option1: '', option2: '', option3: '', option4: '', correct_option: '', explanation: '', difficulty: 'easy', status: 'draft', test_id: testId }]
+  })
+  const [current, setCurrent] = useState<string>('') as any
+  useEffect(() => { if (!current && questions.length) setCurrent(questions[0].id) }, [current, questions])
+  const [errors, setErrors] = useState<Record<string | number, string>>({})
   const questionRef = useRef<HTMLTextAreaElement>(null)
 
   const currentQ = questions.find((q) => q.id === current) || questions[0]
 
   const add = () => {
-    const nextId = Date.now()
-    setQuestions([...questions, { id: nextId, type: 'mcq', question: '', option1: '', option2: '', option3: '', option4: '', correct_option: '', explanation: '', difficulty: 'easy', status: 'draft', test_id: testId }])
-    setCurrent(nextId)
+    const nextId = (typeof crypto !== 'undefined' && (crypto as any).randomUUID)
+      ? (crypto as any).randomUUID()
+      : `q-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`
+    const blank = { id: nextId, type: 'mcq', question: '', option1: '', option2: '', option3: '', option4: '', correct_option: '', explanation: '', difficulty: 'easy', status: 'draft', test_id: testId }
+    setQuestions([...questions, blank])
+    setCurrent(nextId as any)
   }
 
-  const remove = (id: number) => {
+  const remove = (id: string | number) => {
     const filtered = questions.filter((q) => q.id !== id)
     setQuestions(filtered)
-    if (current > filtered.length) setCurrent(Math.max(1, filtered.length))
+    if (filtered.length === 0) {
+      add()
+      return
+    }
+    if (!filtered.find((q) => q.id === current)) setCurrent(filtered[0].id)
     setErrors((e) => { const n = { ...e }; delete n[id]; return n })
   }
 
